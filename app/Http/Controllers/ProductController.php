@@ -11,7 +11,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product = Product::all();
+        $product = Product::all(); 
         return response()->json($product);
    }
 
@@ -38,6 +38,14 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         return response()->json($products);
+    }
+
+    public function getProductsByCategory($id){
+        $category = Category::with('products')->find($id);
+        if (!$category) {
+            return response()->json(['message' => 'Category not found']);
+        }
+        return response()->json($category->products);
     }
 
     /**
