@@ -11,8 +11,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $product = Product::all();
+        return response()->json($product);
+   }
 
     /**
      * Show the form for creating a new resource.
@@ -35,7 +36,8 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $product = Product::find($id);
+        return response()->json($products);
     }
 
     /**
