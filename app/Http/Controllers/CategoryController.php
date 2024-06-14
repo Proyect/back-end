@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $product = Product::all();
-        return response()->json($product);
-   }
+        $category = Category::all();
+        return response()->json($category);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -38,16 +37,7 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        $product = Product::find($id);
-        return response()->json($product);
-    }
-
-    public function getProductsByCategory($id){
-        $category = Category::with('products')->find($id);
-        if (!$category) {
-            return response()->json(['message' => 'Category not found']);
-        }
-        return response()->json($category->products);
+        //
     }
 
     /**
